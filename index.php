@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,10 +6,11 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
-		<title>ReportaTec</title>
+		<title>ReportaTec - Inicio</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -20,7 +20,6 @@
     </head>
 
 	<body>
-	
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
@@ -31,16 +30,13 @@
 					</button>
 					<a class="navbar-brand" href="#">ReportaTec</a>
 				</div>
-                
 				<div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 						<li class="active"><a href="#">Inicio</a></li>
 						<li><a href="#profile">Mis Reportes</a></li>
-                        <li><a href="#myModal" data-toggle="modal">Reportar<</a></li>
-					</ul>
-                    
+                        <li><a href="#myModal" data-toggle="modal">Reportar</a></li>
+					</ul>            
                     <ul class="nav navbar-nav navbar-right">
-                    	
       					<li><a href="#">A01234567</a></li>
       					<li class="dropdown">
         				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Más <b class="caret"></b></a>
@@ -50,13 +46,15 @@
           						<li><a href="#">Cerrar Sesión</a></li>
         					</ul>
       					</li>
-    				</ul>
-                    
+    				</ul> 
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
 		
-		<div class="container" style="margin-top:70px;">
+		<div class="container CScontenedor">
+            <!--
+            Progress bar
+            -->
             <div class="row">
             	<div class="col-md-12">
                     <div class="panel panel-primary">
@@ -88,7 +86,9 @@
                     </div>     
                 </div>
             </div>
-			
+            <!--
+            Termina Progress bar
+            -->
             <div class="row">
                 <!--
                 CONTENIDO
@@ -109,16 +109,20 @@
                                     <th>Detalles</th>
                                     <th>Lugar</th>
                                     <th>Estatus</th>
+                                    <th>Acciones</th>
                                 </tr>
                         	</thead>
                             <tbody>
                               	<tr class="success">
                                 	<td>1</td>
-                                	<td>Impresora sin papel</td>
-                                	<td></td>
+                                	<td>Impresora</td>
+                                	<td>La impresora 2 no tiene hojas.</td>
                                 	<td>Biblioteca</td>
                                     <td>Resuelto</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                               	<tr class="warning">
                                 	<td>2</td>
@@ -126,7 +130,10 @@
                                 	<td>Cuando entro a la página de tesorería tarda mucho en cargar.</td>
                                 	<td>www.gda.itesm.mx/tesoreria</td>
                                     <td>En revisión</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="success">
                                 	<td>3</td>
@@ -134,7 +141,10 @@
                                 	<td>En el aula 1234 hay una sillas rota desde hace dos semanas.</td>
                                 	<td>Aula 1234</td>
                                     <td>Resuelto</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                               	<tr class="danger">
                                 	<td>4</td>
@@ -142,7 +152,10 @@
                                 	<td>the Bird</td>
                                 	<td>@twitter</td>
                                     <td>Confirmado</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="success">
                                 	<td>5</td>
@@ -150,7 +163,10 @@
                                 	<td>Otto</td>
                                 	<td>@mdo</td>
                                     <td>Resuelto</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="danger">
                                 	<td>6</td>
@@ -158,7 +174,10 @@
                                 	<td>the Bird</td>
                                 	<td>@twitter</td>
                                     <td>Confirmado</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="warning">
                                 	<td>7</td>
@@ -166,7 +185,10 @@
                                 	<td>Thornton</td>
                                 	<td>@fat</td>
                                     <td>En revisión</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="success">
                                 	<td>8</td>
@@ -174,7 +196,10 @@
                                 	<td>Otto</td>
                                 	<td>@mdo</td>
                                     <td>Resuelto</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="danger">
                                 	<td>9</td>
@@ -182,7 +207,10 @@
                                 	<td>the Bird</td>
                                 	<td>@twitter</td>
                                     <td>Confirmado</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                                 <tr class="warning">
                                 	<td>10</td>
@@ -190,7 +218,10 @@
                                 	<td>Thornton</td>
                                 	<td>@fat</td>
                                     <td>En revisión</td>
-                                    <td></td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
                               	</tr>
                             </tbody>
                         </table>
@@ -204,15 +235,18 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Búsqueda</h3>
                         </div>
-                        <div class="panel-body">   
-                            <div class="form-group">
-                                <div style="float:left">
-                                   <input type="search" class="form-control" id="inputProblem" placeholder="Encuentra un reporte..." style="border-top-right-radius:0px; border-bottom-right-radius:0px">
-                                </div>
-                                <button type="button" class="btn btn-primary" style="border-top-left-radius:0px; border-bottom-left-radius:0px">
-                                	<span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
+                        <div class="panel-body">
+                            <form role="form">
+                            	<input type="search" class="form-control search-query CSinputSearch" id="inputProblem" placeholder="Busca un reporte...">
+                     
+                                 
+                                
+                                <button type="submit" class="btn btn-primary CSbuttonSearch">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button> 
+                                  
+                                
+                            </form>
                         </div>
                     </div><!-- Busqueda -->
                     <script type="text/javascript">
@@ -268,5 +302,12 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                //$('#tooltip1').tooltip();
+				$("[rel='tooltip']").tooltip();
+				//$('#tooltip2').tooltip();
+            });
+        </script>
   	</body>
 </html>
