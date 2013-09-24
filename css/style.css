@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body{
-	background: #FAFAFA;
-	background: #FAFAFA url(../img/noisebg.png);
+	background: #eaedf2;
+	background: #eaedf2 url(../img/noisebg.png);
 }
 
 .CScontenedor{
@@ -19,4 +19,8 @@ body{
 	border-top-left-radius:0px;
 	border-bottom-left-radius:0px;
 	width:20%	
+}
+
+textarea{
+	resize:none;	
 }

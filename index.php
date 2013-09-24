@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,15 +33,14 @@
 				<div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 						<li class="active"><a href="#">Inicio</a></li>
-						<li><a href="#profile">Mis Reportes</a></li>
-                        <li><a href="#myModal" data-toggle="modal">Reportar</a></li>
+                        <li><a href="#myModal" data-toggle="modal" style="color:#FFF"><b>Reportar</b></a></li>
 					</ul>            
                     <ul class="nav navbar-nav navbar-right">
-      					<li><a href="#">A01234567</a></li>
+      					
       					<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Más <b class="caret"></b></a>
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">&nbsp;</span>A01234567 <b class="caret"></b></a>
         					<ul class="dropdown-menu">
-          						<li><a href="#">Ayuda</a></li>
+                                <li><a href="#">Ayuda</a></li>
                                 <li role="presentation" class="divider"></li>
           						<li><a href="#">Cerrar Sesión</a></li>
         					</ul>
@@ -76,7 +75,7 @@
                                     <span class="sr-only">5% Complete (info)</span>
                                 </div>
                             </div>
-                            <span class="label label-success">Completados</span>
+                            <span class="label label-success">Resuelto</span>
                             <span class="label label-warning">Confirmados</span>
                             <span class="label label-danger">En revisión</span>
                             <span class="label label-info">No válidos</span>  
@@ -90,144 +89,7 @@
             Termina Progress bar
             -->
             <div class="row">
-                <!--
-                CONTENIDO
-                -->
-                <div class="col-md-9">
-                    <div class="panel panel-primary">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">
-                        	Reportes
-                        </div>
-                        
-                        <!-- Table -->
-                        <table class="table table-hover">
-                        	<thead>
-                          		<tr>
-                            		<th>#</th>
-                                    <th>Reporte</th>
-                                    <th>Detalles</th>
-                                    <th>Lugar</th>
-                                    <th>Estatus</th>
-                                    <th>Acciones</th>
-                                </tr>
-                        	</thead>
-                            <tbody>
-                              	<tr class="success">
-                                	<td>1</td>
-                                	<td>Impresora</td>
-                                	<td>La impresora 2 no tiene hojas.</td>
-                                	<td>Biblioteca</td>
-                                    <td>Resuelto</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                              	<tr class="warning">
-                                	<td>2</td>
-                                	<td>Sistema de tesorería lento</td>
-                                	<td>Cuando entro a la página de tesorería tarda mucho en cargar.</td>
-                                	<td>www.gda.itesm.mx/tesoreria</td>
-                                    <td>En revisión</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="success">
-                                	<td>3</td>
-                                	<td>Silla rota</td>
-                                	<td>En el aula 1234 hay una sillas rota desde hace dos semanas.</td>
-                                	<td>Aula 1234</td>
-                                    <td>Resuelto</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                              	<tr class="danger">
-                                	<td>4</td>
-                                	<td>Larry</td>
-                                	<td>the Bird</td>
-                                	<td>@twitter</td>
-                                    <td>Confirmado</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="success">
-                                	<td>5</td>
-                                	<td>Mark</td>
-                                	<td>Otto</td>
-                                	<td>@mdo</td>
-                                    <td>Resuelto</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="danger">
-                                	<td>6</td>
-                                	<td>Larry</td>
-                                	<td>the Bird</td>
-                                	<td>@twitter</td>
-                                    <td>Confirmado</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="warning">
-                                	<td>7</td>
-                                	<td>Jacob</td>
-                                	<td>Thornton</td>
-                                	<td>@fat</td>
-                                    <td>En revisión</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="success">
-                                	<td>8</td>
-                                	<td>Mark</td>
-                                	<td>Otto</td>
-                                	<td>@mdo</td>
-                                    <td>Resuelto</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="danger">
-                                	<td>9</td>
-                                	<td>Larry</td>
-                                	<td>the Bird</td>
-                                	<td>@twitter</td>
-                                    <td>Confirmado</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="warning">
-                                	<td>10</td>
-                                	<td>Jacob</td>
-                                	<td>Thornton</td>
-                                	<td>@fat</td>
-                                    <td>En revisión</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary disabled" id="tooltip" rel="tooltip" title="Reabrir"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!--
+            	<!--
                 SIDEBAR
                 -->
                 <div class="col-md-3">
@@ -249,11 +111,120 @@
                             </form>
                         </div>
                     </div><!-- Busqueda -->
+                    <!-- Mis reporte -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Mis reportes</h3>
+                        </div>
+                        <div class="panel-body">
+                            
+                            
+                            <table class="table table-hover">
+                        	<thead>
+                          		<tr>
+                            		<th>#</th>
+                                    <th>Reporte</th>
+                                    
+                                    <th>Acciones</th>
+                                </tr>
+                        	</thead>
+                            <tbody>
+                              	<tr class="danger">
+                                	<td>1</td>
+                                	<td>Impresora</td>
+                                	
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                    </td>
+                              	</tr>
+                              	<tr class="warning">
+                                	<td>2</td>
+                                	<td>Sistema de tesorería lento</td>
+                                	<td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                    </td>
+                              	</tr>
+                                <tr class="success">
+                                	<td>3</td>
+                                	<td>Silla rota</td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                    </td>
+                              	</tr>
+                            </tbody>
+                        </table>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <!-- /Mis reportes -->
                     <script type="text/javascript">
                 		document.write(window.innerWidth+'x'+window.innerHeight+'<br>');
                 		document.write('320x480');
             		</script>
                 </div><!-- /.sidebar -->
+                <!--
+                CONTENIDO
+                -->
+                <div class="col-md-9">
+                    <div class="panel panel-primary">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                        	Reportes
+                        </div>
+                        
+                        <!-- Table -->
+                        <table class="table table-hover">
+                        	<thead>
+                          		<tr>
+                            		<th>#</th>
+                                    <th>Reporte</th>
+                                    <th>Descripción</th>
+                                    <th>Lugar</th>
+                                    <th>Estatus</th>
+                                    <th>Acciones</th>
+                                </tr>
+                        	</thead>
+                            <tbody>
+                              	<tr class="danger">
+                                	<td>1</td>
+                                	<td>Impresora</td>
+                                	<td>La impresora 2 no tiene hojas.</td>
+                                	<td>Biblioteca</td>
+                                    <td>En revisión</td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
+                              	</tr>
+                              	<tr class="warning">
+                                	<td>2</td>
+                                	<td>Sistema de tesorería lento</td>
+                                	<td>Cuando entro a la página de tesorería tarda mucho en cargar.</td>
+                                	<td>www.gda.itesm.mx/tesoreria</td>
+                                    <td>Confirmado</td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
+                              	</tr>
+                                <tr class="success">
+                                	<td>3</td>
+                                	<td>Silla rota</td>
+                                	<td>En el aula 1234 hay una sillas rota desde hace dos semanas.</td>
+                                	<td>Aula 1234</td>
+                                    <td>Resuelto</td>
+                                    <td>
+                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
+                                    </td>
+                              	</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
                 
             </div>	
 		</div><!-- /.container -->
@@ -277,7 +248,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputDetail" class="col-lg-2 control-label">Detalles</label>
+                                <label for="inputDetail" class="col-lg-2 control-label">Descripción</label>
                                 <div class="col-lg-10">
                                     <textarea class="form-control" id="inputDetail" rows="3" placeholder="Cuéntanos un poco más..."></textarea>
                                 </div>
@@ -304,9 +275,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script>
             $(function () {
-                //$('#tooltip1').tooltip();
 				$("[rel='tooltip']").tooltip();
-				//$('#tooltip2').tooltip();
             });
         </script>
   	</body>
