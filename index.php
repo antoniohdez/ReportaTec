@@ -37,13 +37,8 @@
 					</ul>            
                     <ul class="nav navbar-nav navbar-right">
       					
-      					<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">&nbsp;</span>A01234567 <b class="caret"></b></a>
-        					<ul class="dropdown-menu">
-                                <li><a href="#">Ayuda</a></li>
-                                <li role="presentation" class="divider"></li>
-          						<li><a href="#">Cerrar Sesión</a></li>
-        					</ul>
+      					<li class="dropdown" id="userMenu">
+        					<a href="#" id="user" onClick="active()" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title=""><span class="glyphicon glyphicon-user">&nbsp;</span>A01234567<b class="caret"></b></a>
       					</li>
     				</ul> 
 				</div><!--/.nav-collapse -->
@@ -278,5 +273,38 @@
 				$("[rel='tooltip']").tooltip();
             });
         </script>
+        
+        <div id="popover_content_wrapper" style="display: none;">
+  			<div style="float:left; margin-right:10px; margin-top:3px;">
+            	<img src="img/profile.png">
+            </div>
+            <div style="float:right">
+                <div>Antonio Hernández Campos</div>
+                <div>A01234567</div>
+                <div>Karma: 4.3</div>
+            </div>
+            <div style=" margin:65px -15px -10px -15px; border-radius:0px 0px 5px 5px; padding:10px; background-color:#EEE;">
+            	<a class="btn btn-default">Salir</a>
+            </div>
+		</div>
+        <script>
+        	$(function () {
+				$('#user').popover({ 
+					html : true, 
+					content: function() {
+						return $('#popover_content_wrapper').html();
+					}
+				});
+			});
+        </script>
+        <script>
+			function active(){
+				if($('#userMenu').hasClass('active'))
+					$('#userMenu').removeClass('active');
+				else
+					$('#userMenu').addClass('active');
+			}
+		</script>
+        </body>
   	</body>
 </html>
