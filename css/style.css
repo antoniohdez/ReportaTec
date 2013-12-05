@@ -8,17 +8,8 @@ body{
 	margin-top:70px;	
 }
 
-.CSinputSearch{
-	border-top-right-radius:0px;
-	border-bottom-right-radius:0px;
-	width:80%;
-	float:left;	
-}
-
-.CSbuttonSearch{
-	border-top-left-radius:0px;
-	border-bottom-left-radius:0px;
-	width:20%	
+.CScentrar{
+	text-align:center;
 }
 
 textarea{

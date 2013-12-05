@@ -1,17 +1,21 @@
+<?php
+    require_once('usuariosModel.php');
+    $usuario = new Usuario(); 
+    $usuario->get('A01224787');
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
 		
 		<title>ReportaTec - Inicio</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="js/html5shiv.js"></script>
@@ -33,12 +37,15 @@
 				<div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 						<li class="active"><a href="#">Inicio</a></li>
-                        <li><a href="#myModal" data-toggle="modal" style="color:#FFF"><b>Reportar</b></a></li>
+                        <li><a href="#myModal" data-toggle="modal"><b>Reportar</b></a></li>
 					</ul>            
                     <ul class="nav navbar-nav navbar-right">
       					
       					<li class="dropdown" id="userMenu">
-        					<a href="#" id="user" onClick="active()" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title=""><span class="glyphicon glyphicon-user">&nbsp;</span>A01234567<b class="caret"></b></a>
+        					<a href="#" id="user" onClick="active()" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">
+                                <span class="glyphicon glyphicon-user">&nbsp;</span>
+                                <?php echo $usuario->matricula; ?>&nbsp;&nbsp;<b class="caret"></b>
+                            </a>
       					</li>
     				</ul> 
 				</div><!--/.nav-collapse -->
@@ -94,15 +101,16 @@
                         </div>
                         <div class="panel-body">
                             <form role="form">
-                            	<input type="search" class="form-control search-query CSinputSearch" id="inputProblem" placeholder="Busca un reporte...">
-                     
-                                 
-                                
-                                <button type="submit" class="btn btn-primary CSbuttonSearch">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button> 
-                                  
-                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
+                                            </div><!-- /btn-group -->
+                                        </div><!-- /input-group -->
+                                    </div><!-- /.col-lg-6 -->
+                                </div>
                             </form>
                         </div>
                     </div><!-- Busqueda -->
@@ -112,51 +120,44 @@
                             <h3 class="panel-title">Mis reportes</h3>
                         </div>
                         <div class="panel-body">
-                            
-                            
                             <table class="table table-hover">
-                        	<thead>
-                          		<tr>
-                            		<th>#</th>
-                                    <th>Reporte</th>
-                                    
-                                    <th>Acciones</th>
-                                </tr>
-                        	</thead>
-                            <tbody>
-                              	<tr class="danger">
-                                	<td>1</td>
-                                	<td>Impresora</td>
-                                	
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                    </td>
-                              	</tr>
-                              	<tr class="warning">
-                                	<td>2</td>
-                                	<td>Sistema de tesorería lento</td>
-                                	<td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                    </td>
-                              	</tr>
-                                <tr class="success">
-                                	<td>3</td>
-                                	<td>Silla rota</td>
-                                    <td>
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                    </td>
-                              	</tr>
-                            </tbody>
-                        </table>
-                            
-                            
-                            
+                            	<thead>
+                              		<tr>
+                                		<th>#</th>
+                                        <th>Reporte</th>
+                                        
+                                        <th>Acciones</th>
+                                    </tr>
+                            	</thead>
+                                <tbody>
+                                  	<tr class="danger">
+                                    	<td>1</td>
+                                    	<td>Impresora</td>
+                                        <td class="CScentrar">
+                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        </td>
+                                  	</tr>
+                                  	<tr class="warning">
+                                    	<td>2</td>
+                                    	<td>Sistema de tesorería lento</td>
+                                    	<td class="CScentrar">
+                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        </td>
+                                  	</tr>
+                                    <tr class="success">
+                                    	<td>3</td>
+                                    	<td>Silla rota</td>
+                                        <td class="CScentrar">
+                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                        </td>
+                                  	</tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /Mis reportes -->
-                    <script type="text/javascript">
+                    <script type="text/javascript">//Escribe el tamaño del explorador
                 		document.write(window.innerWidth+'x'+window.innerHeight+'<br>');
-                		document.write('320x480');
             		</script>
                 </div><!-- /.sidebar -->
                 <!--
@@ -168,7 +169,7 @@
                         <div class="panel-heading">
                         	Reportes
                         </div>
-                        
+                        <div class="panel-body">
                         <!-- Table -->
                         <table class="table table-hover">
                         	<thead>
@@ -188,7 +189,7 @@
                                 	<td>La impresora 2 no tiene hojas.</td>
                                 	<td>Biblioteca</td>
                                     <td>En revisión</td>
-                                    <td>
+                                    <td class="CScentrar">
                                     	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
                                         <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
@@ -199,7 +200,7 @@
                                 	<td>Cuando entro a la página de tesorería tarda mucho en cargar.</td>
                                 	<td>www.gda.itesm.mx/tesoreria</td>
                                     <td>Confirmado</td>
-                                    <td>
+                                    <td class="CScentrar">
                                     	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
                                         <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
@@ -210,13 +211,14 @@
                                 	<td>En el aula 1234 hay una sillas rota desde hace dos semanas.</td>
                                 	<td>Aula 1234</td>
                                     <td>Resuelto</td>
-                                    <td>
+                                    <td class="CScentrar">
                                     	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
                                         <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
                                     </td>
                               	</tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
                 
@@ -266,7 +268,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script>
             $(function () {
@@ -279,12 +281,12 @@
             	<img src="img/profile.png">
             </div>
             <div style="float:right">
-                <div>Antonio Hernández Campos</div>
+                <div>Antonio Hernández</div>
                 <div>A01234567</div>
                 <div>Karma: 4.3</div>
             </div>
             <div style=" margin:65px -15px -10px -15px; border-radius:0px 0px 5px 5px; padding:10px; background-color:#EEE;">
-            	<a class="btn btn-default">Salir</a>
+                <a class="btn btn-default">Cerrar Sesión</a>
             </div>
 		</div>
         <script>
