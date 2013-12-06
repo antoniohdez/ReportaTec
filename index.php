@@ -1,8 +1,9 @@
 <?php
-    require_once('usuariosModel.php');
-    $usuario = new Usuario(); 
-    $usuario->get('A01224787');
-
+    require_once("ModeloUsuarios.php");
+    require_once("driver.php");
+    require_once("view.php");
+    validarSession("any");
+    
 ?>
 
 <!DOCTYPE html>
@@ -16,42 +17,13 @@
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="js/html5shiv.js"></script>
-			<script src="js/respond.min.js"></script>
-		<![endif]-->
+		
     </head>
 
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">ReportaTec</a>
-				</div>
-				<div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-						<li class="active"><a href="#">Inicio</a></li>
-                        <li><a href="#myModal" data-toggle="modal"><b>Reportar</b></a></li>
-					</ul>            
-                    <ul class="nav navbar-nav navbar-right">
-      					
-      					<li class="dropdown" id="userMenu">
-        					<a href="#" id="user" onClick="active()" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">
-                                <span class="glyphicon glyphicon-user">&nbsp;</span>
-                                <?php echo $usuario->matricula; ?>&nbsp;&nbsp;<b class="caret"></b>
-                            </a>
-      					</li>
-    				</ul> 
-				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-		
+		<?php
+            printTopbar();
+        ?>
 		<div class="container CScontenedor">
             <!--
             Progress bar
@@ -60,7 +32,7 @@
             	<div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Reportes de la última semana: </h3>
+                            <h3 class="panel-title">Reportes del sistema: </h3>
                         </div>
                         <div class="panel-body">        
                             <div class="progress">
@@ -81,8 +53,20 @@
                             <span class="label label-warning">Confirmados</span>
                             <span class="label label-danger">En revisión</span>
                             <span class="label label-info">No válidos</span>  
-                            Reportes: <strong>127</strong>
-                            Efectividad: <strong>55%</strong>
+                            Reportes: 
+                            <strong>
+                            <?php 
+                                $numReportes = count(getReportes());
+                                $numResueltos = count(getResueltos());
+                                print $numReportes;
+                            ?>
+                            </strong>
+                            Efectividad: 
+                            <strong>
+                            <?php
+                                print ($numResueltos/$numReportes)*100; print "%";
+                            ?>
+                            </strong>
                         </div>
                     </div>     
                 </div>
@@ -95,6 +79,11 @@
                 SIDEBAR
                 -->
                 <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <?php
+                            printProfile();
+                        ?>
+                    </div>
                 	<div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Búsqueda</h3>
@@ -116,49 +105,11 @@
                     </div><!-- Busqueda -->
                     <!-- Mis reporte -->
                     <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Mis reportes</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                            	<thead>
-                              		<tr>
-                                		<th>#</th>
-                                        <th>Reporte</th>
-                                        
-                                        <th>Acciones</th>
-                                    </tr>
-                            	</thead>
-                                <tbody>
-                                  	<tr class="danger">
-                                    	<td>1</td>
-                                    	<td>Impresora</td>
-                                        <td class="CScentrar">
-                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        </td>
-                                  	</tr>
-                                  	<tr class="warning">
-                                    	<td>2</td>
-                                    	<td>Sistema de tesorería lento</td>
-                                    	<td class="CScentrar">
-                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        </td>
-                                  	</tr>
-                                    <tr class="success">
-                                    	<td>3</td>
-                                    	<td>Silla rota</td>
-                                        <td class="CScentrar">
-                                        	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        </td>
-                                  	</tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <?php
+                            printReportesUsuario();
+                        ?>
                     </div>
                     <!-- /Mis reportes -->
-                    <script type="text/javascript">//Escribe el tamaño del explorador
-                		document.write(window.innerWidth+'x'+window.innerHeight+'<br>');
-            		</script>
                 </div><!-- /.sidebar -->
                 <!--
                 CONTENIDO
@@ -177,45 +128,29 @@
                             		<th>#</th>
                                     <th>Reporte</th>
                                     <th>Descripción</th>
-                                    <th>Lugar</th>
+                                    
                                     <th>Estatus</th>
                                     <th>Acciones</th>
                                 </tr>
                         	</thead>
                             <tbody>
-                              	<tr class="danger">
-                                	<td>1</td>
-                                	<td>Impresora</td>
-                                	<td>La impresora 2 no tiene hojas.</td>
-                                	<td>Biblioteca</td>
-                                    <td>En revisión</td>
-                                    <td class="CScentrar">
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
+                                <?php
+                                    $reportes = getReportes();
+                                    foreach ($reportes as $reporte){
+                                        print '<tr class="'; 
+                                        print getColorEstado($reporte->estadoReporte); 
+                                        print '">
+                                            <td>'.$reporte->id.'</td>
+                                            <td>'.$reporte->titulo.'</td>
+                                            <td>'.$reporte->descripcion.'</td>
+                                            <td>'.$reporte->estadoReporte.'</td>
+                                            <td class="CScentrar">
+                                                <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
                                         <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                              	<tr class="warning">
-                                	<td>2</td>
-                                	<td>Sistema de tesorería lento</td>
-                                	<td>Cuando entro a la página de tesorería tarda mucho en cargar.</td>
-                                	<td>www.gda.itesm.mx/tesoreria</td>
-                                    <td>Confirmado</td>
-                                    <td class="CScentrar">
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
-                                <tr class="success">
-                                	<td>3</td>
-                                	<td>Silla rota</td>
-                                	<td>En el aula 1234 hay una sillas rota desde hace dos semanas.</td>
-                                	<td>Aula 1234</td>
-                                    <td>Resuelto</td>
-                                    <td class="CScentrar">
-                                    	<button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
-                                    </td>
-                              	</tr>
+                                            </td>
+                                        </tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         </div>
@@ -268,6 +203,11 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="js/html5shiv.js"></script>
+            <script src="js/respond.min.js"></script>
+        <![endif]-->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script>
@@ -276,29 +216,6 @@
             });
         </script>
         
-        <div id="popover_content_wrapper" style="display: none;">
-  			<div style="float:left; margin-right:10px; margin-top:3px;">
-            	<img src="img/profile.png">
-            </div>
-            <div style="float:right">
-                <div>Antonio Hernández</div>
-                <div>A01234567</div>
-                <div>Karma: 4.3</div>
-            </div>
-            <div style=" margin:65px -15px -10px -15px; border-radius:0px 0px 5px 5px; padding:10px; background-color:#EEE;">
-                <a class="btn btn-default">Cerrar Sesión</a>
-            </div>
-		</div>
-        <script>
-        	$(function () {
-				$('#user').popover({ 
-					html : true, 
-					content: function() {
-						return $('#popover_content_wrapper').html();
-					}
-				});
-			});
-        </script>
         <script>
 			function active(){
 				if($('#userMenu').hasClass('active'))
