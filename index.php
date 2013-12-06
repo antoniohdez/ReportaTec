@@ -118,7 +118,7 @@
                     <div class="panel panel-primary">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
-                        	Reportes
+                        	<h3 class="panel-title">Reportes</h3>
                         </div>
                         <div class="panel-body">
                         <!-- Table -->
@@ -171,32 +171,29 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Reporta tu problema</h4>
                     </div>
+                    <form class="form-horizontal" role="form" action="acciones.php" method="post">
+                        <input type="hidden" name="nuevoReporte" value="nuevoReporte">
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <!--<form class="form-horizontal" role="form" action="acciones.php" method="post">-->
                             <div class="form-group">
                                 <label for="inputProblem" class="col-lg-2 control-label">Problema</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputProblem" placeholder="¿Cuál es tu problema?">
+                                    <input type="text" class="form-control" id="inputProblem" name="inputProblem" placeholder="¿Cuál es tu problema?">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputDetail" class="col-lg-2 control-label">Descripción</label>
                                 <div class="col-lg-10">
-                                    <textarea class="form-control" id="inputDetail" rows="3" placeholder="Cuéntanos un poco más..."></textarea>
+                                    <textarea class="form-control" id="inputDetail" name="inputDetail" rows="3" placeholder="Cuéntanos un poco más..."></textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputPlace" class="col-lg-2 control-label">Lugar</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputPlace" placeholder="¿Dónde ocurrió?">
-                                </div>
-                            </div>
-                        </form>
+                        <!--</form>-->
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-primary">Enviar Reporte</button>
                     </div>
+                    </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
