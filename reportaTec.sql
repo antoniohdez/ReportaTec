@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-12-2013 a las 00:51:23
+-- Tiempo de generación: 07-12-2013 a las 00:53:16
 -- Versión del servidor: 5.1.44
 -- Versión de PHP: 5.3.1
 
@@ -47,3 +47,27 @@ INSERT INTO `Reporte` (`matriculaFK`, `id`, `titulo`, `descripcion`, `estadoRepo
 ('A01234567', 6, 'Bici sin cadena', 'Cerca de arquitectura hay un bicicleta sin cadena', 'Resuelto', ''),
 ('A01224787', 7, 'Sistema de reportes', 'Prueba de sistema de reportes', 'En revisión', 'Informática'),
 ('A01224787', 9, 'Prueba 2', 'Prueba de reporte 2', 'En revisión', 'No asignado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `Usuario` (
+  `matricula` varchar(9) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellidoM` varchar(20) NOT NULL,
+  `apellidoP` varchar(20) NOT NULL,
+  `karma` float NOT NULL,
+  `password` varchar(32) NOT NULL,
+  PRIMARY KEY (`matricula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcar la base de datos para la tabla `Usuario`
+--
+
+INSERT INTO `Usuario` (`matricula`, `nombre`, `apellidoM`, `apellidoP`, `karma`, `password`) VALUES
+('A01224787', 'Antonio', 'Hernández', 'Campos', 4.5, 'e10adc3949ba59abbe56e057f20f883e'),
+('A01234567', 'Juan', ' ', 'Perez', 3, 'e10adc3949ba59abbe56e057f20f883e');
