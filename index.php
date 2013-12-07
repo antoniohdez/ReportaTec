@@ -45,7 +45,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control">
+                                            <input id="busqueda" type="text" class="form-control">
                                             <div class="input-group-btn">
                                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
                                             </div><!-- /btn-group -->
@@ -245,6 +245,24 @@
                 
             });
         </script>
+
+
+        <script>
+        //Script para el formulario de búsqueda
+        $("#busqueda").keyup(function() {
+            var buscar = $("#busqueda").val();
+            $("[id*=reporteInfo]").each(function(){
+                if($(this).text().indexOf(buscar)!=-1) {
+                    $(this).fadeIn(100);
+                }else{
+
+                    $(this).fadeOut(100);
+                }
+            }); 
+        });
+        </script>
+
+
         <script>
 			function active(){
 				if($('#userMenu').hasClass('active'))

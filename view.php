@@ -174,7 +174,7 @@
 	                <tbody>';
                         $reportes = getReportes();
                         foreach ($reportes as $reporte){
-                            print '<tr class="'; 
+                            print '<tr id="reporteInfo" class="'; 
                             print getColorEstado($reporte->estadoReporte); 
                             print '">
                                 <td style="vertical-align:middle">'.$reporte->id.'</td>
