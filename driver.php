@@ -19,6 +19,9 @@
 		else if($session == "any"){
 			//
 		}
+		else if($session == "login"){
+			header("Location: index.php");
+		}
 		else if($session != $_SESSION["usuario"]->tipo){
 			header("location: login.php?error=1");
 		}
