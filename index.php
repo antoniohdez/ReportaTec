@@ -134,17 +134,97 @@
         <script>
             $(function () {
 				$("[rel='tooltip']").tooltip();
+                $("[rel='tooltipGuardar']").tooltip();
+                $("[rel='tooltipGuardar']").hide();
             });
         </script>
         <script>
+            function selectedOption(option){
+                $('#estatusOption'+option).change(function() {
+                    var selectVal = $('#estatusOption'+option+' :selected').val();
+                    return selectVal;
+                });
+            }
+
+            function getSelectEstatus(id, option){
+                var html = "<select id=estatusOption"+id+">";
+                if(option == "En revisión"){
+                    html += "<option selected='selected'>En revisión</option>";
+                    html += "<option>Confirmado</option><option>Resuelto</option>";
+                }else if(option == "Confirmado"){
+                    html += "<option>En revisión</option>";
+                    html += "<option selected='selected'>Confirmado</option>";
+                    html += "<option>Resuelto</option>";
+                }else if(option == "Resuelto"){
+                    html += "<option>En revisión</option><option>Confirmado</option>";
+                    html += "<option selected='selected'>Resuelto</option>";
+                }
+                html += "</select>";
+                return html;
+            }
+
+            function getSelectDepartamento(id, option){
+                var html = "<select id=Departamento"+id+">";
+                if(option == "Informática"){
+                    html += "<option>No asignado</option>";
+                    html += "<option selected='selected'>Informática</option>";
+                    html += "<option>Planta física</option>";
+                }else if(option == "Planta física"){
+                    html += "<option>No asignado</option>";
+                    html += "<option>Informática</option>";
+                    html += "<option selected='selected'>Planta física</option>";
+                }else if(option == "No asignado"){
+                    html += "<option selected='selected'>No asignado</option>";
+                    html += "<option>Informática</option>";
+                    html += "<option>Planta física</option>";
+                }
+                else{
+                    html += "<option selected='selected'>No asignado</option>";
+                    html += "<option>Informática</option>";
+                    html += "<option>Planta física</option>";   
+                }
+                html += "</select>";
+                return html;
+
+            }
+
             $("button").click(function(){
                 if($(this).attr("id") == "tooltip"){
-                    var reporte = "#Estatus"+ ($(this).attr("reporte"));
-                    var departamento = "#Departamento"+ ($(this).attr("reporte"));
-                    $(reporte).html("<select><option>En revisión</option><option>Confirmado</option><option>Resuelto</option></select>");
-                    $(departamento).html("<select><option>Informática</option><option>Planta física</option></select>");
-                    $(this).html("<span class='glyphicon glyphicon-floppy-disk'></span>");
+                    var id = ($(this).attr("reporte"));
+                    var reporte = "#Estatus"+ id;
+                    var departamento = "#Departamento"+ id;
+                    var estatusVal = $(reporte).text();
+                    var departamentoVal = $(departamento).text();
+                    
+                    $(reporte).html(getSelectEstatus(id, estatusVal));
+                    $(departamento).html(getSelectDepartamento(id, departamentoVal));
+                    $(this).hide();
+                    $("[guardar*="+id+"]").show();
+
+                    
+                    //selectedOption(($(this).attr("reporte")));
+
+                }else if($(this).attr("id") == "tooltipGuardar"){
+                    var id = ($(this).attr("guardar"));
+                    var reporte = "#Estatus"+ id;
+                    var departamento = "#Departamento"+ id;
+                    
+                    var estatus = $('#estatusOption'+id+' :selected').val();
+                    var asignacion = $('#departamento'+id+' :selected').val();
+
+                    console.log(estatus);
+                    console.log(asignacion);
+
+                    $(reporte).html(estatus);
+                    $(departamento).html(asignacion);
+                    $(this).hide();
+                    $("[reporte*="+id+"]").show();
+                    
+
+                    //console.log($("#estatusOption3 option:selected").text());
+                    //$("[guardar*="+($(this).attr("reporte"))+"]").show();
                 }
+                
             });
         </script>
         <script>
