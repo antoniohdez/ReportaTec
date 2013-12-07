@@ -164,8 +164,12 @@
 	                        <th>Descripción</th>
 	                        
 	                        <th>Estatus</th>
-	                        <th>Asignación</th>
-	                    </tr>
+	                        <th>Asignación</th>';
+	                        if($_SESSION["usuario"]->tipo == "admin"){
+	                        	print '<th>Acciones</th>';
+	                        }
+
+	                    print '</tr>
 	            	</thead>
 	                <tbody>';
                         $reportes = getReportes();
@@ -176,9 +180,14 @@
                                 <td>'.$reporte->id.'</td>
                                 <td>'.$reporte->titulo.'</td>
                                 <td>'.$reporte->descripcion.'</td>
-                                <td>'.$reporte->estadoReporte.'</td>
-                                <td>'.$reporte->departamento.'</td>
-                            </tr>';
+                                <td id="Estatus'.$reporte->id.'" style="vertical-align:middle">'.$reporte->estadoReporte.'</td>
+                                <td id="Departamento'.$reporte->id.'" style="vertical-align:middle">'.$reporte->departamento.'</td>';
+                                if($_SESSION["usuario"]->tipo == "admin"){
+                                	print '<td class="CScentrar" style="vertical-align:middle">
+							                <button type="button" class="btn btn-md btn-default" id="tooltip" reporte="'.$reporte->id.'" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
+							            </td>';
+                                }
+                            print '</tr>';
                         }
 	                print '
 	                </tbody>

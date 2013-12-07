@@ -136,7 +136,17 @@
 				$("[rel='tooltip']").tooltip();
             });
         </script>
-        
+        <script>
+            $("button").click(function(){
+                if($(this).attr("id") == "tooltip"){
+                    var reporte = "#Estatus"+ ($(this).attr("reporte"));
+                    var departamento = "#Departamento"+ ($(this).attr("reporte"));
+                    $(reporte).html("<select><option>En revisión</option><option>Confirmado</option><option>Resuelto</option></select>");
+                    $(departamento).html("<select><option>Informática</option><option>Planta física</option></select>");
+                    $(this).html("<span class='glyphicon glyphicon-floppy-disk'></span>");
+                }
+            });
+        </script>
         <script>
 			function active(){
 				if($('#userMenu').hasClass('active'))
