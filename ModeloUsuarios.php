@@ -54,7 +54,7 @@ class Usuario{
 
 	function enviarReporte($titulo, $descripcion){
 		$conn = open_connection();
-		if($result = mysqli_query($conn,"INSERT INTO Reporte (matriculaFK, titulo, descripcion, estadoReporte) VALUES ('".$this->matricula."','$titulo','$descripcion','En revisión')")){
+		if($result = mysqli_query($conn,"INSERT INTO Reporte (matriculaFK, titulo, descripcion, estadoReporte, departamento) VALUES ('".$this->matricula."','$titulo','$descripcion','En revisión', 'No asignado')")){
 			return true;
 		}
 		return false;

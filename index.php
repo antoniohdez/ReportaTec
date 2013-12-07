@@ -30,45 +30,14 @@
             -->
             <div class="row">
             	<div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Reportes del sistema: </h3>
-                        </div>
-                        <div class="panel-body">        
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 55%">
-                                    <span class="sr-only">55% Complete (success)</span>
-                                </div>
-                                <div class="progress-bar progress-bar-warning" style="width: 25%">
-                                    <span class="sr-only">25% Complete (warning)</span>
-                                </div>
-                                <div class="progress-bar progress-bar-danger" style="width: 15%">
-                                    <span class="sr-only">15% Complete (danger)</span>
-                                </div>
-                                <div class="progress-bar progress-bar-info" style="width: 5%">
-                                    <span class="sr-only">5% Complete (info)</span>
-                                </div>
-                            </div>
-                            <span class="label label-success">Resuelto</span>
-                            <span class="label label-warning">Confirmados</span>
-                            <span class="label label-danger">En revisión</span>
-                            <span class="label label-info">No válidos</span>  
-                            Reportes: 
-                            <strong>
-                            <?php 
-                                $numReportes = count(getReportes());
-                                $numResueltos = count(getResueltos());
-                                print $numReportes;
-                            ?>
-                            </strong>
-                            Efectividad: 
-                            <strong>
-                            <?php
-                                print ($numResueltos/$numReportes)*100; print "%";
-                            ?>
-                            </strong>
-                        </div>
-                    </div>     
+                    
+
+
+
+
+
+
+
                 </div>
             </div>
             <!--
@@ -116,6 +85,11 @@
                 -->
                 <div class="col-md-9">
                     <div class="panel panel-primary">
+                        <?php
+                            printReportesGeneral();
+                        ?>
+                    </div>
+                    <div class="panel panel-primary">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
                         	<h3 class="panel-title">Reportes</h3>
@@ -130,7 +104,7 @@
                                     <th>Descripción</th>
                                     
                                     <th>Estatus</th>
-                                    <th>Acciones</th>
+                                    <th>Asignación</th>
                                 </tr>
                         	</thead>
                             <tbody>
@@ -144,10 +118,7 @@
                                             <td>'.$reporte->titulo.'</td>
                                             <td>'.$reporte->descripcion.'</td>
                                             <td>'.$reporte->estadoReporte.'</td>
-                                            <td class="CScentrar">
-                                                <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>                                
-                                        <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
-                                            </td>
+                                            <td>'.$reporte->departamento.'</td>
                                         </tr>';
                                     }
                                 ?>
@@ -156,11 +127,14 @@
                         </div>
                     </div>
                 </div>
-                
-                
             </div>	
 		</div><!-- /.container -->
-		
+		<!--
+            <td class="CScentrar">
+                <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Detalles"><span class="glyphicon glyphicon-align-justify"></span></button>
+                <button type="button" class="btn btn-xs btn-primary" id="tooltip" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+        -->
         <!--
         Modal - Capturar reporte
         -->

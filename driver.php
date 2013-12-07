@@ -35,6 +35,17 @@
 		return $reportes;
 	}
 
+	function getConfirmados(){
+		$conn = open_connection();
+		if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE estadoReporte = 'Confirmado'")){
+			$reportes = array();
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				array_push($reportes, new Reporte($row["id"]));
+			}
+		}
+		return $reportes;
+	}
+
 	function getResueltos(){
 		$conn = open_connection();
 		if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE estadoReporte = 'Resuelto'")){
