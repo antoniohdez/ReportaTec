@@ -1,5 +1,6 @@
 <?php
     require_once("ModeloUsuarios.php");
+    require_once("ModeloAdmin.php");
     require_once("driver.php");
     require_once("view.php");
     validarSession("any");
@@ -25,34 +26,16 @@
             printTopbar();
         ?>
 		<div class="container CScontenedor">
-            <!--
-            Progress bar
-            -->
-            <div class="row">
-            	<div class="col-md-12">
-                    
-
-
-
-
-
-
-
-                </div>
-            </div>
-            <!--
-            Termina Progress bar
-            -->
             <div class="row">
             	<!--
                 SIDEBAR
                 -->
                 <div class="col-md-3">
-                    <div class="panel panel-primary">
-                        <?php
-                            printProfile();
-                        ?>
-                    </div>
+                    
+                    <?php
+                    if($_SESSION["usuario"]->tipo == "user")
+                        printProfile();
+                    ?>
                 	<div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Búsqueda</h3>
@@ -73,11 +56,10 @@
                         </div>
                     </div><!-- Busqueda -->
                     <!-- Mis reporte -->
-                    <div class="panel panel-primary">
-                        <?php
+                    <?php
+                        if($_SESSION["usuario"]->tipo == "user")
                             printReportesUsuario();
-                        ?>
-                    </div>
+                    ?>
                     <!-- /Mis reportes -->
                 </div><!-- /.sidebar -->
                 <!--
@@ -86,45 +68,13 @@
                 <div class="col-md-9">
                     <div class="panel panel-primary">
                         <?php
-                            printReportesGeneral();
+                            printReportesProgreso();
                         ?>
                     </div>
                     <div class="panel panel-primary">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">
-                        	<h3 class="panel-title">Reportes</h3>
-                        </div>
-                        <div class="panel-body">
-                        <!-- Table -->
-                        <table class="table table-hover">
-                        	<thead>
-                          		<tr>
-                            		<th>#</th>
-                                    <th>Reporte</th>
-                                    <th>Descripción</th>
-                                    
-                                    <th>Estatus</th>
-                                    <th>Asignación</th>
-                                </tr>
-                        	</thead>
-                            <tbody>
-                                <?php
-                                    $reportes = getReportes();
-                                    foreach ($reportes as $reporte){
-                                        print '<tr class="'; 
-                                        print getColorEstado($reporte->estadoReporte); 
-                                        print '">
-                                            <td>'.$reporte->id.'</td>
-                                            <td>'.$reporte->titulo.'</td>
-                                            <td>'.$reporte->descripcion.'</td>
-                                            <td>'.$reporte->estadoReporte.'</td>
-                                            <td>'.$reporte->departamento.'</td>
-                                        </tr>';
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                        </div>
+                        <?php
+                         printReportesGeneral();
+                        ?>
                     </div>
                 </div>
             </div>	

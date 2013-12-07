@@ -13,15 +13,17 @@
 						</button>';
 				}
 				print '
-						<a class="navbar-brand" href="#">ReportaTec</a>
+						<a class="navbar-brand" href="index.php">ReportaTec</a>
 					</div>
 					';
 				if(isset($_SESSION["usuario"])){
 					print '
 					<div class="collapse navbar-collapse">
 	                    <ul class="nav navbar-nav">
-							<li class="active"><a href="#">Inicio</a></li>
-	                        <li><a href="#myModal" data-toggle="modal"><b>Reportar</b></a></li>
+							<li class="active"><a href="index.php">Inicio</a></li>';
+							if($_SESSION["usuario"]->tipo == "user")
+	                        print '<li><a href="#myModal" data-toggle="modal"><b>Reportar</b></a></li>';
+	                    print '
 						</ul>            
 	                    <ul class="nav navbar-nav navbar-right">
 		  					<li>
@@ -37,7 +39,9 @@
 	}
 
 	function printProfile(){
-		print '<div class="panel-heading">
+
+		print '<div class="panel panel-primary">
+				<div class="panel-heading">
 	                <h3 class="panel-title">'.$_SESSION["usuario"]->nombre.' '.$_SESSION["usuario"]->apellidoP.' '.$_SESSION["usuario"]->apellidoM.'</h3>
 	            </div>
 	            <div class="panel-body">
@@ -61,13 +65,15 @@
 	                        </tr>
 	                    </tbody>
 	                </table>
-	            </div>'
+	            </div>
+	        </div>'
 		;
 	}
 
 	function printReportesUsuario(){
 		$_SESSION["usuario"]->recargarReportes();
-		print '<div class="panel-heading">
+		print '<div class="panel panel-primary">
+				<div class="panel-heading">
                     <h3 class="panel-title">Mis reportes</h3>
                 </div>
                 <div class="panel-body">
@@ -94,12 +100,13 @@
                           	print '
                         </tbody>
                     </table>
-                </div>';
+                </div>
+            </div>';
 	}
 
-	function printReportesGeneral(){
+	function printReportesProgreso(){
 		print '<div class="panel-heading">
-                    <h3 class="panel-title">Reportes del sistema: </h3>
+                    <h3 class="panel-title">Resumen de reportes: </h3>
                 </div>
                 <div class="panel-body">        
                     <div class="progress">';
@@ -128,7 +135,7 @@
                     <span class="label label-success">Resuelto</span>
                     <span class="label label-warning">Confirmados</span>
                     <span class="label label-danger">En revisión</span>
-                    <span class="label label-info">No válidos</span>  
+                    <!--<span class="label label-info">No válidos</span> --> 
                     Reportes: 
                     <strong>';
                     
@@ -140,6 +147,43 @@
                     </strong>
                 </div>
 
+		';
+	}
+
+	function printReportesGeneral(){
+		print '
+			<div class="panel-heading">
+            	<h3 class="panel-title">Reportes</h3>
+            </div>
+            <div class="panel-body">
+	            <table class="table table-hover">
+	            	<thead>
+	              		<tr>
+	                		<th>#</th>
+	                        <th>Reporte</th>
+	                        <th>Descripción</th>
+	                        
+	                        <th>Estatus</th>
+	                        <th>Asignación</th>
+	                    </tr>
+	            	</thead>
+	                <tbody>';
+                        $reportes = getReportes();
+                        foreach ($reportes as $reporte){
+                            print '<tr class="'; 
+                            print getColorEstado($reporte->estadoReporte); 
+                            print '">
+                                <td>'.$reporte->id.'</td>
+                                <td>'.$reporte->titulo.'</td>
+                                <td>'.$reporte->descripcion.'</td>
+                                <td>'.$reporte->estadoReporte.'</td>
+                                <td>'.$reporte->departamento.'</td>
+                            </tr>';
+                        }
+	                print '
+	                </tbody>
+	            </table>
+            </div>
 		';
 	}
 ?>
