@@ -95,7 +95,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Reporta tu problema</h4>
                     </div>
-                    <form class="form-horizontal" role="form" action="acciones.php" method="post">
+                    <form class="form-horizontal" role="form" action="accionesUser.php" method="post">
                         <input type="hidden" name="nuevoReporte" value="nuevoReporte">
                     <div class="modal-body">
                         <!--<form class="form-horizontal" role="form" action="acciones.php" method="post">-->
@@ -208,21 +208,39 @@
                     var id = ($(this).attr("guardar"));
                     var reporte = "#Estatus"+ id;
                     var departamento = "#Departamento"+ id;
-                    
+                                
                     var estatus = $('#estatusOption'+id+' :selected').val();
-                    var asignacion = $('#departamento'+id+' :selected').val();
+                    var asignacion = $('#Departamento'+id+' :selected').val();
+                    var button = $(this);
+                    var parametros = {
+                        "id" : id,
+                        "estatus" : estatus,
+                        "departamento" : asignacion
+                    }
+                    $.ajax({
+                        data: parametros,
+                        url: 'accionesAdmin.php',
+                        type: 'post',
+                        beforeSend: function () {
+                            //$("#button").html("Saving point...");
+                        },
+                        success:  function (response) {
+                            //$("#button").html("Done!");
+                            if(response == "success"){
 
-                    console.log(estatus);
-                    console.log(asignacion);
+                                $(reporte).html(estatus);
+                                $(departamento).html(asignacion);
+                                button.hide();
+                                $("[reporte*="+id+"]").show();
+                            }
+                            else {
+                                alert(response);
+                                alert("Ocurrió un error al editar el reporte #" + id);
+                            }
+                        }
+                    });
 
-                    $(reporte).html(estatus);
-                    $(departamento).html(asignacion);
-                    $(this).hide();
-                    $("[reporte*="+id+"]").show();
                     
-
-                    //console.log($("#estatusOption3 option:selected").text());
-                    //$("[guardar*="+($(this).attr("reporte"))+"]").show();
                 }
                 
             });
