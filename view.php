@@ -150,6 +150,44 @@
 		';
 	}
 
+	function printEstadoSistema(){
+		$confirmados = count(getConfirmados());
+		$resueltos = count(getResueltos());
+		$totalReportes = count(getReportes());
+		$enRevision = $totalReportes - $resueltos - $confirmados;
+
+		print '<div class="panel panel-primary">
+				<div class="panel-heading">
+                    <h3 class="panel-title">Resumen del sistema</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                    	<thead>
+                      		
+                    	</thead>
+                        <tbody>
+                        	<tr>
+	                            <td>En revisión:</td>
+	                            <td class="CScentrar">'.$enRevision.'</td>
+	                        </tr>
+                        	<tr>
+	                            <td>Confirmados:</td>
+	                            <td class="CScentrar">'.$confirmados.'</td>
+	                        </tr>
+	                        <tr>
+	                            <td>Resueltos:</td>
+	                            <td class="CScentrar">'.$resueltos.'</td>
+	                        </tr>
+	                        <tr>
+	                            <td>Total reportes:</td>
+	                            <td class="CScentrar">'.$totalReportes.'</td>
+	                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>';
+	}
+
 	function printReportesGeneral(){
 		print '
 			<div class="panel-heading">
@@ -177,13 +215,13 @@
                             print '<tr id="reporteInfo" class="'; 
                             print getColorEstado($reporte->estadoReporte); 
                             print '">
-                                <td style="vertical-align:middle">'.$reporte->id.'</td>
-                                <td style="vertical-align:middle">'.$reporte->titulo.'</td>
-                                <td style="vertical-align:middle">'.$reporte->descripcion.'</td>
-                                <td id="Estatus'.$reporte->id.'" style="vertical-align:middle">'.$reporte->estadoReporte.'</td>
-                                <td id="Departamento'.$reporte->id.'" style="vertical-align:middle">'.$reporte->departamento.'</td>';
+                                <td style="vertical-align:middle; width:40px">'.$reporte->id.'</td>
+                                <td style="vertical-align:middle; width:15%">'.$reporte->titulo.'</td>
+                                <td style="vertical-align:middle; width:35%">'.$reporte->descripcion.'</td>
+                                <td id="Estatus'.$reporte->id.'" style="vertical-align:middle;">'.$reporte->estadoReporte.'</td>
+                                <td id="Departamento'.$reporte->id.'" style="vertical-align:middle;">'.$reporte->departamento.'</td>';
                                 if($_SESSION["usuario"]->tipo == "admin"){
-                                	print '<td class="CScentrar" style="vertical-align:middle">
+                                	print '<td class="CScentrar" style="vertical-align:middle; width:75px">
 							                <button type="button" class="btn btn-md btn-default" id="tooltip" reporte="'.$reporte->id.'" rel="tooltip" title="Editar"><span class="glyphicon glyphicon-edit"></span></button>
 							                <button type="button" class="btn btn-md btn-default" id="tooltipGuardar" guardar="'.$reporte->id.'" rel="tooltipGuardar" title="Guardar"><span class="glyphicon glyphicon-floppy-disk"></span></button>
 							            </td>';

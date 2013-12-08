@@ -35,6 +35,9 @@
                     <?php
                     if($_SESSION["usuario"]->tipo == "user")
                         printProfile();
+                    else{
+                        printEstadoSistema();
+                    }
                     ?>
                 	<div class="panel panel-primary">
                         <div class="panel-heading">
@@ -152,11 +155,12 @@
                     html += "<option selected='selected'>En revisión</option>";
                     html += "<option>Confirmado</option><option>Resuelto</option>";
                 }else if(option == "Confirmado"){
-                    html += "<option>En revisión</option>";
+                    //html += "<option>En revisión</option>";
                     html += "<option selected='selected'>Confirmado</option>";
                     html += "<option>Resuelto</option>";
                 }else if(option == "Resuelto"){
-                    html += "<option>En revisión</option><option>Confirmado</option>";
+                    html += "<option>En revisión</option>";
+                    html += "<option>Confirmado</option>";
                     html += "<option selected='selected'>Resuelto</option>";
                 }
                 html += "</select>";
@@ -227,14 +231,13 @@
                         success:  function (response) {
                             //$("#button").html("Done!");
                             if(response == "success"){
-
                                 $(reporte).html(estatus);
                                 $(departamento).html(asignacion);
+                                $(reporte).parent().removeClass().addClass(getClass(estatus));
                                 button.hide();
                                 $("[reporte*="+id+"]").show();
                             }
                             else {
-                                alert(response);
                                 alert("Ocurrió un error al editar el reporte #" + id);
                             }
                         }
@@ -244,6 +247,18 @@
                 }
                 
             });
+
+        function getClass(estatus){
+            if(estatus == "En revisión"){
+                return "danger";
+            }else if(estatus == "Confirmado"){
+                return "warning";
+            }
+            else if(estatus == "Resuelto"){
+                return "success";
+            }
+            return ;
+        }
         </script>
 
 
