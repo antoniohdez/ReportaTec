@@ -29,7 +29,7 @@
 
 	function getReportes(){
 		$conn = open_connection();
-		if($result = mysqli_query($conn,"SELECT id FROM Reporte")){
+		if($result = mysqli_query($conn,"SELECT id FROM Reporte ORDER BY id DESC")){
 			$reportes = array();
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				array_push($reportes, new Reporte($row["id"]));

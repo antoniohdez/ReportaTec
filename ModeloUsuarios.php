@@ -20,7 +20,7 @@ class Usuario{
 			 	$this->apellidoM = $row["apellidoM"];
 				$this->karma = $row["karma"];
 				$this->tipo = 'user';
-				if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE matriculaFK = '".$row["matricula"]."'")){
+				if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE matriculaFK = '$this->matricula' ORDER BY id DESC ")){
 					$this->reportes = array();
 					while($row = $result->fetch_array(MYSQLI_ASSOC)){
 						array_push($this->reportes, new Reporte($row["id"]));
@@ -33,7 +33,7 @@ class Usuario{
 
 	function recargarReportes(){
 		$conn = open_connection();
-		if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE matriculaFK = '".$this->matricula."'")){
+		if($result = mysqli_query($conn,"SELECT id FROM Reporte WHERE matriculaFK = '$this->matricula' ORDER BY id DESC")){
 			$this->reportes = array();
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				array_push($this->reportes, new Reporte($row["id"]));
